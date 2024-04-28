@@ -27,7 +27,6 @@
 #include <windows.h>
 #include <tchar.h>
 
-#define MINICRT_BUILD
 #include "ChicagoCRT.h"
 
 unsigned int bit_recycler = 0;

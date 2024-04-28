@@ -27,7 +27,6 @@
 #include <windows.h>
 #include <tchar.h>
 
-#define MINICRT_BUILD
 #include "ChicagoCRT.h"
 
 BOOL WINAPI _DllMainCRTStartup(HINSTANCE hInst, DWORD dwReason, LPVOID lpvReserved)

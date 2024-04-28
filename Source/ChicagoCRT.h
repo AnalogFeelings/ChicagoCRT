@@ -211,7 +211,7 @@ extern "C" {
 #define    mini_tprintf         mini_printf
 #endif
 
-#ifndef MINICRT_BUILD
+#ifndef CHICAGOCRT_BUILD
 
 //
 //  Have apps use them by default

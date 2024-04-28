@@ -27,7 +27,6 @@
 #include <windows.h>
 #include <tchar.h>
 
-#define MINICRT_BUILD
 #include "ChicagoCRT.h"
 
 int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine, int nShowCmd);

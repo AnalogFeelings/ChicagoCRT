@@ -31,7 +31,6 @@
 #define FILE_SHARE_DELETE 4
 #endif
 
-#define MINICRT_BUILD
 #include "ChicagoCRT.h"
 
 #ifdef UNICODE
