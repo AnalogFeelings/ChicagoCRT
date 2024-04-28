@@ -1,7 +1,7 @@
 /*
- * FILEW.C
+ * RANDOM.C
  *
- * Implementations of the Unicode file library functions.
+ * Implementations for random library functions.
  *
  * Copyright (c) 2014 Malcolm J. Smith
  *
@@ -24,6 +24,29 @@
  * THE SOFTWARE.
  */
 
-#define UNICODE 1
-#define _UNICODE 1
-#include "file.c"
+#ifndef WIN32_LEAN_AND_MEAN
+#define WIN32_LEAN_AND_MEAN 1
+#endif
+
+#include <windows.h>
+#include <tchar.h>
+
+#define MINICRT_BUILD
+#include "ChicagoCRT.h"
+
+unsigned int bit_recycler = 0;
+unsigned int rand_seed = 0;
+
+int MCRT_VARARGFN mini_rand()
+{
+    unsigned int oldbits = bit_recycler>>23;
+    bit_recycler = (bit_recycler<<7) + (rand_seed>>23);
+    rand_seed = (rand_seed * 83 + 13) ^ (rand_seed>>17) ^ (oldbits);
+    return rand_seed % RAND_MAX;
+}
+
+void MCRT_FN mini_srand(unsigned int seed)
+{
+    rand_seed = seed;
+    bit_recycler = 0;
+}

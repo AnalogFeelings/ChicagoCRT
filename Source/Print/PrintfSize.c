@@ -1,7 +1,7 @@
 /*
- * ENVW.C
+ * PRINTFSIZE.C
  *
- * Implementations of the Unicode environment library functions.
+ * Printf length calculation.
  *
  * Copyright (c) 2014 Malcolm J. Smith
  *
@@ -24,6 +24,5 @@
  * THE SOFTWARE.
  */
 
-#define UNICODE 1
-#define _UNICODE 1
-#include "env.c"
+#define PRINTF_SIZEONLY 1
+#include "Printf.c"

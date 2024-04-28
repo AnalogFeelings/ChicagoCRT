@@ -1,7 +1,7 @@
 /*
- * PRINTFSZ.C
+ * FILEUNICODE.C
  *
- * Printf length calculation.
+ * Implementations of the Unicode file library functions.
  *
  * Copyright (c) 2014 Malcolm J. Smith
  *
@@ -24,5 +24,6 @@
  * THE SOFTWARE.
  */
 
-#define PRINTF_SIZEONLY 1
-#include "printf.c"
+#define UNICODE 1
+#define _UNICODE 1
+#include "File.c"

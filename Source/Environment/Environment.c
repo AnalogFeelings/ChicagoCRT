@@ -1,5 +1,5 @@
 /*
- * ENV.C
+ * ENVIRONMENT.C
  *
  * Implementations for environment library functions.
  *

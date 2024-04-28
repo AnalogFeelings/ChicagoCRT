@@ -1,5 +1,5 @@
 /*
- * MEM.C
+ * MEMORY.C
  *
  * Implementations for mem* library functions.
  *

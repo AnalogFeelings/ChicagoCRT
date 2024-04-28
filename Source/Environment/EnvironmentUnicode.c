@@ -1,7 +1,7 @@
 /*
- * PRINTFW.C
+ * ENVIRONMENTUNICODE.C
  *
- * Unicode versions of printf functions.
+ * Implementations of the Unicode environment library functions.
  *
  * Copyright (c) 2014 Malcolm J. Smith
  *
@@ -26,7 +26,4 @@
 
 #define UNICODE 1
 #define _UNICODE 1
-#include "printf.c"
-
-#define PRINTF_SIZEONLY 1
-#include "printf.c"
+#include "Environment.c"
