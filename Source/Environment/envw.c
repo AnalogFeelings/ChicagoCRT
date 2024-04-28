@@ -1,7 +1,7 @@
 /*
- * EP_GUI.C
+ * ENVW.C
  *
- * Entrypoint code for Unicode GUI applications.
+ * Implementations of the Unicode environment library functions.
  *
  * Copyright (c) 2014 Malcolm J. Smith
  *
@@ -24,8 +24,6 @@
  * THE SOFTWARE.
  */
 
-
 #define UNICODE 1
-#include "ep_gui.c"
-
-// vim:sw=4:ts=4:et:
+#define _UNICODE 1
+#include "env.c"

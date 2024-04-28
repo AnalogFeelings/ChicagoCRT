@@ -1,7 +1,7 @@
 /*
- * EP_DLL.C
+ * GRAPHICAL.C
  *
- * Entrypoint code for DLLs.  Currently just a stub.
+ * Entrypoint code for GUI applications.
  *
  * Copyright (c) 2014 Malcolm J. Smith
  *
@@ -32,16 +32,42 @@
 #include <tchar.h>
 
 #define MINICRT_BUILD
-#include "minicrt.h"
+#include "ChicagoCRT.h"
 
-BOOL WINAPI _DllMainCRTStartup(HINSTANCE hInst, DWORD dwReason, LPVOID lpvReserved)
+int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine, int nShowCmd);
+
+#ifdef UNICODE
+#define GUI_USER_ENTRYPOINT wWinMain
+#define GUI_CRT_ENTRYPOINT  wWinMainCRTStartup
+#else
+#define GUI_USER_ENTRYPOINT WinMain
+#define GUI_CRT_ENTRYPOINT  WinMainCRTStartup
+#endif
+
+VOID GUI_CRT_ENTRYPOINT()
 {
-    UNREFERENCED_PARAMETER(hInst);
-    UNREFERENCED_PARAMETER(dwReason);
-    UNREFERENCED_PARAMETER(lpvReserved);
+	LPTSTR szCmdLine = GetCommandLine();
+	TCHAR  cTerminate = ' ';
 
-    return TRUE;
+	if (*szCmdLine == '"') {
+		cTerminate = '"';
+		szCmdLine++;
+	}
+
+	while (*szCmdLine && *szCmdLine != cTerminate) {
+		szCmdLine++;
+	}
+
+	if (*szCmdLine == '"') {
+		szCmdLine++;
+	}
+
+	while (*szCmdLine && *szCmdLine == ' ') {
+		szCmdLine++;
+	}
+
+
+	GUI_USER_ENTRYPOINT(GetModuleHandle(NULL), NULL, szCmdLine, SW_SHOW);
+
+	ExitProcess(0);
 }
-
-
-// vim:sw=4:ts=4:et:

@@ -1,7 +1,7 @@
 /*
- * ENVW.C
+ * CONSOLEUNICODE.C
  *
- * Implementations of the Unicode environment library functions.
+ * Entrypoint code for Unicode console applications
  *
  * Copyright (c) 2014 Malcolm J. Smith
  *
@@ -24,9 +24,5 @@
  * THE SOFTWARE.
  */
 
-
 #define UNICODE 1
-#define _UNICODE 1
-#include "env.c"
-
-// vim:sw=4:ts=4:et:
+#include "Console.c"

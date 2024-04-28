@@ -1,7 +1,7 @@
 /*
- * FILEW.C
+ * GRAPHICALUNICODE.C
  *
- * Implementations of the Unicode file library functions.
+ * Entrypoint code for Unicode GUI applications.
  *
  * Copyright (c) 2014 Malcolm J. Smith
  *
@@ -24,9 +24,5 @@
  * THE SOFTWARE.
  */
 
-
 #define UNICODE 1
-#define _UNICODE 1
-#include "file.c"
-
-// vim:sw=4:ts=4:et:
+#include "Graphical.c"

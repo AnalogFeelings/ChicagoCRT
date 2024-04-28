@@ -1,7 +1,7 @@
 /*
- * EP_CONSW.C
+ * LIBRARY.C
  *
- * Entrypoint code for Unicode console applications
+ * Entrypoint code for DLLs.  Currently just a stub.
  *
  * Copyright (c) 2014 Malcolm J. Smith
  *
@@ -24,7 +24,21 @@
  * THE SOFTWARE.
  */
 
-#define UNICODE 1
-#include "ep_cons.c"
+#ifndef WIN32_LEAN_AND_MEAN
+#define WIN32_LEAN_AND_MEAN 1
+#endif
 
-// vim:sw=4:ts=4:et:
+#include <windows.h>
+#include <tchar.h>
+
+#define MINICRT_BUILD
+#include "ChicagoCRT.h"
+
+BOOL WINAPI _DllMainCRTStartup(HINSTANCE hInst, DWORD dwReason, LPVOID lpvReserved)
+{
+	UNREFERENCED_PARAMETER(hInst);
+	UNREFERENCED_PARAMETER(dwReason);
+	UNREFERENCED_PARAMETER(lpvReserved);
+
+	return TRUE;
+}

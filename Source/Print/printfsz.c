@@ -1,7 +1,7 @@
 /*
- * EP_GUI.C
+ * PRINTFSZ.C
  *
- * Entrypoint code for GUI applications.
+ * Printf length calculation.
  *
  * Copyright (c) 2014 Malcolm J. Smith
  *
@@ -24,52 +24,5 @@
  * THE SOFTWARE.
  */
 
-#ifndef WIN32_LEAN_AND_MEAN
-#define WIN32_LEAN_AND_MEAN 1
-#endif
-
-#include <windows.h>
-#include <tchar.h>
-
-#define MINICRT_BUILD
-#include "minicrt.h"
-
-int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine, int nShowCmd);
-
-#ifdef UNICODE
-#define GUI_USER_ENTRYPOINT wWinMain
-#define GUI_CRT_ENTRYPOINT  wWinMainCRTStartup
-#else
-#define GUI_USER_ENTRYPOINT WinMain
-#define GUI_CRT_ENTRYPOINT  WinMainCRTStartup
-#endif
-
-VOID GUI_CRT_ENTRYPOINT()
-{
-    LPTSTR szCmdLine = GetCommandLine();
-    TCHAR  cTerminate = ' ';
-
-    if (*szCmdLine == '"') {
-        cTerminate = '"';
-        szCmdLine++;
-    }
-
-    while (*szCmdLine && *szCmdLine != cTerminate) {
-        szCmdLine++;
-    }
-
-    if (*szCmdLine == '"') {
-        szCmdLine++;
-    }
-
-    while (*szCmdLine && *szCmdLine == ' ') {
-        szCmdLine++;
-    }
-
-
-    GUI_USER_ENTRYPOINT(GetModuleHandle(NULL), NULL, szCmdLine, SW_SHOW);
-
-    ExitProcess(0);
-}
-
-// vim:sw=4:ts=4:et:
+#define PRINTF_SIZEONLY 1
+#include "printf.c"

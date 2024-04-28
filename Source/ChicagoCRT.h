@@ -1,11 +1,12 @@
 /*
- * MINICRT.H
+ * CHICAGOCRT.H
  *
- * Header file for minicrt based applications.  Function prototypes and
+ * Header file for ChicagoCRT based applications.  Function prototypes and
  * appropriate #defines to default to their use and define Unicode-
  * conditional functions.
  *
  * Copyright (c) 2014-2017 Malcolm J. Smith
+ * Copyright (c) 2024-2024 Analog Feelings
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,12 +31,10 @@
 extern "C" {
 #endif
 
-#define MINICRT_VER 0x0001000a
-
-//
-//  On x86 systems, use __stdcall wherever possible.  Use the default
-//  on every other architecture.
-//
+	//
+	//  On x86 systems, use __stdcall wherever possible.  Use the default
+	//  on every other architecture.
+	//
 
 #ifdef _M_IX86
 #define MCRT_FN __stdcall
@@ -48,109 +47,109 @@ extern "C" {
 #ifndef HAVE_MINICRT_FILE
 #undef FILE
 
-typedef struct _minicrt_file {
-    HANDLE hFile;
-} minicrt_file, *pminicrt_file;
+	typedef struct _minicrt_file {
+		HANDLE hFile;
+	} minicrt_file, * pminicrt_file;
 
 #define FILE minicrt_file
 #define HAVE_MINICRT_FILE 1
 #endif
 
-void *     MCRT_FN mini_memcpy(void * dest, void * src, unsigned int len);
-int        MCRT_FN mini_memcmp(const void * buf1, const void * buf2, unsigned int len);
-void *     MCRT_FN mini_memmove(void * dest, void * src, unsigned int len);
-void *     MCRT_FN mini_memset(void * dest, char c, unsigned int len);
+	void* MCRT_FN mini_memcpy(void* dest, void* src, unsigned int len);
+	int MCRT_FN mini_memcmp(const void* buf1, const void* buf2, unsigned int len);
+	void* MCRT_FN mini_memmove(void* dest, void* src, unsigned int len);
+	void* MCRT_FN mini_memset(void* dest, char c, unsigned int len);
 
-void       MCRT_FN mini_srand(unsigned int seed);
-int        MCRT_VARARGFN mini_rand();
+	void MCRT_FN mini_srand(unsigned int seed);
+	int MCRT_VARARGFN mini_rand();
 
-void       MCRT_FN mini_searchenvex_s(const char * filename, const char * env, char * buffer, unsigned int len, int * component);
-void       MCRT_FN mini_wsearchenvex_s(const wchar_t * filename, const wchar_t * env, wchar_t * buffer, unsigned int len, int * component);
-void       MCRT_FN mini_searchenv_s(const char * filename, const char * env, char * buffer, unsigned int len);
-void       MCRT_FN mini_wsearchenv_s(const wchar_t * filename, const wchar_t * env, wchar_t * buffer, unsigned int len);
-void       MCRT_FN mini_searchenv(const char * filename, const char * env, char * buffer);
-void       MCRT_FN mini_wsearchenv(const wchar_t * filename, const wchar_t * env, wchar_t * buffer);
+	void MCRT_FN mini_searchenvex_s(const char* filename, const char* env, char* buffer, unsigned int len, int* component);
+	void MCRT_FN mini_wsearchenvex_s(const wchar_t* filename, const wchar_t* env, wchar_t* buffer, unsigned int len, int* component);
+	void MCRT_FN mini_searchenv_s(const char* filename, const char* env, char* buffer, unsigned int len);
+	void MCRT_FN mini_wsearchenv_s(const wchar_t* filename, const wchar_t* env, wchar_t* buffer, unsigned int len);
+	void MCRT_FN mini_searchenv(const char* filename, const char* env, char* buffer);
+	void MCRT_FN mini_wsearchenv(const wchar_t* filename, const wchar_t* env, wchar_t* buffer);
 
-FILE *     MCRT_FN mini_fopen(char * filename, char * mode);
-FILE *     MCRT_FN mini_wfopen(wchar_t * filename, wchar_t * mode);
+	FILE* MCRT_FN mini_fopen(char* filename, char* mode);
+	FILE* MCRT_FN mini_wfopen(wchar_t* filename, wchar_t* mode);
 
-char *     MCRT_FN mini_fgets(char * string, int n, FILE * fp);
-wchar_t *  MCRT_FN mini_fgetws(wchar_t * string, int n, FILE * fp);
+	char* MCRT_FN mini_fgets(char* string, int n, FILE* fp);
+	wchar_t* MCRT_FN mini_fgetws(wchar_t* string, int n, FILE* fp);
 
-int        MCRT_FN mini_fclose(FILE * fp);
+	int MCRT_FN mini_fclose(FILE* fp);
 
-int        MCRT_FN mini_atoi(char * str);
-int        MCRT_FN mini_wtoi(wchar_t * str);
+	int MCRT_FN mini_atoi(char* str);
+	int MCRT_FN mini_wtoi(wchar_t* str);
 
-char *     MCRT_FN mini_strncat(char * dest, const char * src, unsigned int len);
-wchar_t *  MCRT_FN mini_wcsncat(wchar_t * dest, const wchar_t * src, unsigned int len);
+	char* MCRT_FN mini_strncat(char* dest, const char* src, unsigned int len);
+	wchar_t* MCRT_FN mini_wcsncat(wchar_t* dest, const wchar_t* src, unsigned int len);
 
-char *     MCRT_FN mini_strcat_s(char * dest, unsigned int len, const char * src);
-wchar_t *  MCRT_FN mini_wcscat_s(wchar_t * dest, unsigned int len, const wchar_t * src);
+	char* MCRT_FN mini_strcat_s(char* dest, unsigned int len, const char* src);
+	wchar_t* MCRT_FN mini_wcscat_s(wchar_t* dest, unsigned int len, const wchar_t* src);
 
-char *     MCRT_FN mini_strchr(const char * str, char ch);
-wchar_t *  MCRT_FN mini_wcschr(const wchar_t * str, wchar_t ch);
+	char* MCRT_FN mini_strchr(const char* str, char ch);
+	wchar_t* MCRT_FN mini_wcschr(const wchar_t* str, wchar_t ch);
 
-char *     MCRT_FN mini_strstr(const char * str, char * search);
-wchar_t *  MCRT_FN mini_wcsstr(const wchar_t * str, wchar_t * search);
+	char* MCRT_FN mini_strstr(const char* str, char* search);
+	wchar_t* MCRT_FN mini_wcsstr(const wchar_t* str, wchar_t* search);
 
-char *     MCRT_FN mini_strrchr(const char * str, char ch);
-wchar_t *  MCRT_FN mini_wcsrchr(const wchar_t * str, wchar_t ch);
+	char* MCRT_FN mini_strrchr(const char* str, char ch);
+	wchar_t* MCRT_FN mini_wcsrchr(const wchar_t* str, wchar_t ch);
 
-char *     MCRT_FN mini_strupr(char * str);
-wchar_t *  MCRT_FN mini_wcsupr(wchar_t * str);
+	char* MCRT_FN mini_strupr(char* str);
+	wchar_t* MCRT_FN mini_wcsupr(wchar_t* str);
 
-char *     MCRT_FN mini_strlwr(char * str);
-wchar_t *  MCRT_FN mini_wcslwr(wchar_t * str);
+	char* MCRT_FN mini_strlwr(char* str);
+	wchar_t* MCRT_FN mini_wcslwr(wchar_t* str);
 
-int        MCRT_FN mini_strcmp(const char * str1, const char * str2);
-int        MCRT_FN mini_wcscmp(const wchar_t * str1, const wchar_t * str2);
+	int MCRT_FN mini_strcmp(const char* str1, const char* str2);
+	int MCRT_FN mini_wcscmp(const wchar_t* str1, const wchar_t* str2);
 
-int        MCRT_FN mini_stricmp(const char * str1, const char * str2);
-int        MCRT_FN mini_wcsicmp(const wchar_t * str1, const wchar_t * str2);
+	int MCRT_FN mini_stricmp(const char* str1, const char* str2);
+	int  MCRT_FN mini_wcsicmp(const wchar_t* str1, const wchar_t* str2);
 
-int        MCRT_FN mini_strncmp(const char * str1, const char * str2, unsigned int count);
-int        MCRT_FN mini_wcsncmp(const wchar_t * str1, const wchar_t * str2, unsigned int count);
+	int MCRT_FN mini_strncmp(const char* str1, const char* str2, unsigned int count);
+	int MCRT_FN mini_wcsncmp(const wchar_t* str1, const wchar_t* str2, unsigned int count);
 
-int        MCRT_FN mini_strnicmp(const char * str1, const char * str2, unsigned int count);
-int        MCRT_FN mini_wcsnicmp(const wchar_t * str1, const wchar_t * str2, unsigned int count);
+	int MCRT_FN mini_strnicmp(const char* str1, const char* str2, unsigned int count);
+	int MCRT_FN mini_wcsnicmp(const wchar_t* str1, const wchar_t* str2, unsigned int count);
 
-int        MCRT_FN mini_strspn(char * str, char * chars);
-int        MCRT_FN mini_wcsspn(wchar_t * str, wchar_t * chars);
+	int MCRT_FN mini_strspn(char* str, char* chars);
+	int MCRT_FN mini_wcsspn(wchar_t* str, wchar_t* chars);
 
-int        MCRT_FN mini_strcspn(char * str, char * chars);
-int        MCRT_FN mini_wcscspn(wchar_t * str, wchar_t * chars);
+	int MCRT_FN mini_strcspn(char* str, char* chars);
+	int MCRT_FN mini_wcscspn(wchar_t* str, wchar_t* chars);
 
-char *     MCRT_FN mini_strtok_s(char * str, char * match, char ** context);
-wchar_t *  MCRT_FN mini_wcstok_s(wchar_t * str, wchar_t * match, wchar_t ** context);
+	char* MCRT_FN mini_strtok_s(char* str, char* match, char** context);
+	wchar_t* MCRT_FN mini_wcstok_s(wchar_t* str, wchar_t* match, wchar_t** context);
 
-char *     MCRT_FN mini_strtok(char * str, char * match);
-wchar_t *  MCRT_FN mini_wcstok(wchar_t * str, wchar_t * match);
+	char* MCRT_FN mini_strtok(char* str, char* match);
+	wchar_t* MCRT_FN mini_wcstok(wchar_t* str, wchar_t* match);
 
-int        MCRT_FN mini_strlen(const char * str);
-int        MCRT_FN mini_wcslen(const wchar_t * str);
+	int MCRT_FN mini_strlen(const char* str);
+	int MCRT_FN mini_wcslen(const wchar_t* str);
 
-int        MCRT_VARARGFN mini_vsprintf_s(char * szDest, unsigned int len, const char * szFmt, va_list marker);
-int        MCRT_VARARGFN mini_vswprintf_s(wchar_t * szDest, unsigned int len, const wchar_t * szFmt, va_list marker);
+	int MCRT_VARARGFN mini_vsprintf_s(char* szDest, unsigned int len, const char* szFmt, va_list marker);
+	int MCRT_VARARGFN mini_vswprintf_s(wchar_t* szDest, unsigned int len, const wchar_t* szFmt, va_list marker);
 
-int        MCRT_VARARGFN mini_vsprintf_size(const char * szFmt, va_list marker);
-int        MCRT_VARARGFN mini_vswprintf_size(const wchar_t * szFmt, va_list marker);
+	int MCRT_VARARGFN mini_vsprintf_size(const char* szFmt, va_list marker);
+	int MCRT_VARARGFN mini_vswprintf_size(const wchar_t* szFmt, va_list marker);
 
-int        MCRT_VARARGFN mini_sprintf_s(char * szDest, unsigned int len, const char * szFmt, ...);
-int        MCRT_VARARGFN mini_swprintf_s(wchar_t * szDest, unsigned int len, const wchar_t * szFmt, ...);
+	int MCRT_VARARGFN mini_sprintf_s(char* szDest, unsigned int len, const char* szFmt, ...);
+	int MCRT_VARARGFN mini_swprintf_s(wchar_t* szDest, unsigned int len, const wchar_t* szFmt, ...);
 
-int        MCRT_VARARGFN mini_sprintf(char * szDest, const char * szFmt, ...);
-int        MCRT_VARARGFN mini_swprintf(wchar_t * szDest, const wchar_t * szFmt, ...);
+	int MCRT_VARARGFN mini_sprintf(char* szDest, const char* szFmt, ...);
+	int MCRT_VARARGFN mini_swprintf(wchar_t* szDest, const wchar_t* szFmt, ...);
 
-int        MCRT_VARARGFN mini_fprintf(FILE * fp, const char * szFmt, ...);
-int        MCRT_VARARGFN mini_fwprintf(FILE * fp, const wchar_t * szFmt, ...);
+	int MCRT_VARARGFN mini_fprintf(FILE* fp, const char* szFmt, ...);
+	int MCRT_VARARGFN mini_fwprintf(FILE* fp, const wchar_t* szFmt, ...);
 
-int        MCRT_VARARGFN mini_printf(const char * szFmt, ...);
-int        MCRT_VARARGFN mini_wprintf(const wchar_t * szFmt, ...);
+	int MCRT_VARARGFN mini_printf(const char* szFmt, ...);
+	int MCRT_VARARGFN mini_wprintf(const wchar_t* szFmt, ...);
 
-//
-//  Map tchar versions to the correct place
-//
+	//
+	//  Map tchar versions to the correct place
+	//
 
 #ifdef UNICODE
 #define    mini_tsearchenv      mini_wsearchenv
@@ -560,5 +559,3 @@ int        MCRT_VARARGFN mini_wprintf(const wchar_t * szFmt, ...);
 #ifdef __cplusplus
 }
 #endif
-
-// vim:sw=4:ts=4:et:
