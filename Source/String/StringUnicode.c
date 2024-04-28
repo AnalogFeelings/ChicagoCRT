@@ -1,5 +1,5 @@
 /*
- * STRING.C
+ * STRINGUNICODE.C
  *
  * Implementations of the Unicode str* library functions.
  *
