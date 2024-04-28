@@ -10,6 +10,10 @@
 
 ChicagoCRT is a fork of MiniCRT designed to run on systems Windows 95 and higher, on x86.
 
+> [!WARNING]
+> This library is for Windows 95, and as such, security features like Spectre mitigation and RTC are disabled.  
+> Proceed with extreme caution!
+
 ## :thinking: Inspiration
 
 MattKC has recently published a video on porting .NET Framework to Windows 95, which made me think about doing the same, but with programs compiled on modern Windows SDKs.
