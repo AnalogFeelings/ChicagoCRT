@@ -21,13 +21,17 @@ MattKC has recently published a video on porting .NET Framework to Windows 95, w
 I knew it was possible, since MSVC allows you to disable the standard library and enhanced instructions, but I had to get around the artificial limitation imposed by the system version
 in the PE header.
 
+## :test_tube: Sample Project
+
+You can find a sample project on how to use this [here](https://github.com/AnalogFeelings/ChicagoSample/)!
+
 ## :desktop_computer: System Requirements
 
 ChicagoCRT does not depend on APIs newer than Windows NT 3.1 or Windows 95. A Unicode binary with ChicagoCRT can run on NT 3.1; an ANSI binary can run on Windows 95.
 
 > [!IMPORTANT]
 > Newer compilers will mark executables as requiring Windows Vista or higher.  
-> This is an artificial limitation, and you can find a script to get around this on my GitHub Gists. (TODO)
+> This is an artificial limitation, and you can find a script to get around this [here](https://github.com/AnalogFeelings/ChicagoSample/blob/master/Scripts/PatchExecutable.csx).
 
 ## :toolbox: Build instructions
 
