@@ -21,6 +21,8 @@ MattKC has recently published a video on porting .NET Framework to Windows 95, w
 I knew it was possible, since MSVC allows you to disable the standard library and enhanced instructions, but I had to get around the artificial limitation imposed by the system version
 in the PE header.
 
+You can read a blog post I've made about this project [here](https://analogfeelings.github.io/posts/building-software-with-modern-toolchains-for-chicago/)!
+
 ## :test_tube: Sample Project
 
 You can find a sample project on how to use this [here](https://github.com/AnalogFeelings/ChicagoSample/)!
